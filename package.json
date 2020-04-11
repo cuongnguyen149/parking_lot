@@ -1,0 +1,22 @@
+{
+  "name": "parking_lot",
+  "version": "1.0.0",
+  "description": "A test for client",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node src/app.js"
+  },
+  "author": "Cuong Nguyen",
+  "license": "ISC",
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.5"
+  }
+}
