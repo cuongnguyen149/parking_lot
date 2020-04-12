@@ -8,6 +8,7 @@ import {
 	getParkingMessage,
 	getLeavingMessage,
 	getStatusMessage,
+	getNotFoundMessage,
 } from "../common/utils";
 import { getCommandDetails } from "../common/processInput";
 let parkingLotTEST = [];
@@ -80,7 +81,7 @@ function processLeavingCommand(parkingLot, vehicleInformation, hours) {
 		const fee = calculateFee(hours);
 		return getLeavingMessage(vehicleInformation, parkingSlotNumber, fee);
 	} else {
-		console.log("Could not found", vehicleInformation);
+		return getNotFoundMessage(vehicleInformation);
 	}
 }
 

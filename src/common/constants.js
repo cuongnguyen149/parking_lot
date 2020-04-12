@@ -18,4 +18,5 @@ export const MESSAGE = {
 	LEAVE: `Registration number ${REPLACE_PARAM.VEHICLE_INFORMATION} with Slot Number ${REPLACE_PARAM.SLOT_NUMBER} is free with Charge ${REPLACE_PARAM.FEE}`,
 	SLOT_NO: "Slot No.",
 	REGISTRATION_NO: "Registration No.",
+	NOT_FOUND: `Registration number ${REPLACE_PARAM.VEHICLE_INFORMATION} not found`,
 };

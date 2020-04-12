@@ -78,3 +78,11 @@ export function getStatusMessage(parkingLot) {
 		);
 	}
 }
+
+export function getNotFoundMessage(vehicleInformation) {
+	const notFoundMessage = MESSAGE.NOT_FOUND.replace(
+		REPLACE_PARAM.VEHICLE_INFORMATION,
+		vehicleInformation
+	);
+	return process.stdout.write(`${notFoundMessage} \n`);
+}
