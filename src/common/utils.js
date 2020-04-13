@@ -2,14 +2,28 @@ import { COMMAND_NAME, BASE_FEE, MESSAGE, REPLACE_PARAM } from "./constants";
 import { getCommandDetails } from "./processInput";
 
 export function isValidCommand(command) {
-	return COMMAND_NAME[command.toUpperCase()];
+	if (command && typeof command === "string") {
+		return COMMAND_NAME[command.toUpperCase()];
+	}
+	return;
 }
 
 export function isValidInput(arrayCommands) {
+	if (
+		!arrayCommands ||
+		!Array.isArray(arrayCommands) ||
+		arrayCommands.length === 0
+	) {
+		console.log(`Invalid input command.`);
+		return false;
+	}
 	for (let [index, command] of arrayCommands.entries()) {
 		//Why [0]? Because position 0 is command and the others are information of command.
-		if (!isValidCommand(getCommandDetails(command)[0])) {
-			console.log(`invalid command at line ${index + 1}`);
+		if (
+			typeof command !== "string" ||
+			!isValidCommand(getCommandDetails(command)[0])
+		) {
+			console.log(`Invalid command at line ${index + 1}`);
 			return false;
 		}
 	}
@@ -18,7 +32,7 @@ export function isValidInput(arrayCommands) {
 
 export function isValidNumber(number) {
 	return (
-		Number.isInteger(Number.parseInt(number)) && Number.parseInt(number) > 0
+		Number.isInteger(Number.parseFloat(number)) && Number.parseInt(number) > 0
 	);
 }
 
@@ -48,6 +62,7 @@ export function findIndexByVehicleInformation(parkingLot, vehicleInformation) {
 }
 
 export function calculateFee(hour) {
+	hour = Math.ceil(hour);
 	return hour > 2 ? BASE_FEE * (hour - 2) + BASE_FEE : BASE_FEE;
 }
 
