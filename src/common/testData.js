@@ -1,7 +1,4 @@
 const commonValue = [undefined, null, "", {}, [], "  "];
-export const baseParkingLot = [
-	{ parkingSlotNumber: 1, vehicleInformation: "KA-01-HH-1234" },
-];
 export const validArrayCommand = [
 	"create_parking_lot 6",
 	"park KA-01-HH-1234",
@@ -11,7 +8,6 @@ export const validArrayCommand = [
 	"park KA-01-HH-2701",
 	"park KA-01-HH-3141",
 	"leave KA-01-HH-3141 4",
-	"status",
 	"park KA-01-P-333",
 	"park DL-12-AA-9999",
 	"leave KA-01-HH-1234 4",
@@ -20,9 +16,26 @@ export const validArrayCommand = [
 	"park KA-09-HH-0987",
 	"park CA-09-IO-1111",
 	"park KA-09-HH-0123",
+];
+export const validArrayCommandWithStatus = [
+	"create_parking_lot 6",
+	"park KA-01-HH-1234",
 	"status",
+	"leave DL-12-AA-9999 2",
+	"park KA-09-HH-0987",
+	"park CA-09-IO-1111",
+	"park KA-09-HH-0123",
 ];
 
+export const validArrayCommandWithInvalidParkingLot = [
+	"create_parking_lot -6",
+	"park KA-01-HH-1234",
+	"status",
+	"leave DL-12-AA-9999 2",
+	"park KA-09-HH-0987",
+	"park CA-09-IO-1111",
+	"park KA-09-HH-0123",
+];
 export const inValidArrayCommand = [
 	["park1"],
 	[undefined],

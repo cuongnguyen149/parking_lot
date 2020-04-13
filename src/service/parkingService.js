@@ -11,15 +11,15 @@ import {
 	getNotFoundMessage,
 } from "../common/utils";
 import { getCommandDetails } from "../common/processInput";
-let parkingLotTEST = [];
+let initialParkingLot = [];
 
 function getParkingCapacity(createParkingLotCommand) {
 	const parkingCapacity = getCommandDetails(createParkingLotCommand)[1]; //1 is position of parking capacity in create command.
 	if (isValidNumber(parkingCapacity)) {
 		return Number.parseInt(parkingCapacity);
 	}
-	console.log("Parking lot should negative");
-	return;
+	console.log("Parking lot should be an integer and greater than 0.");
+	return 0;
 }
 
 function processCommand(command, parkingCapacity) {
@@ -29,19 +29,20 @@ function processCommand(command, parkingCapacity) {
 
 	switch (commandName) {
 		case COMMAND_NAME.PARK:
-			processParkingCommand(
-				parkingLotTEST,
+			return processParkingCommand(
+				initialParkingLot,
 				parkingCapacity,
 				vehicleInformation
 			);
-			break;
 		case COMMAND_NAME.LEAVE:
 			const hours = commandDetails[2];
-			processLeavingCommand(parkingLotTEST, vehicleInformation, hours);
-			break;
+			return processLeavingCommand(
+				initialParkingLot,
+				vehicleInformation,
+				hours
+			);
 		case COMMAND_NAME.STATUS:
-			processStatusCommand(parkingLotTEST);
-			break;
+			return processStatusCommand(initialParkingLot);
 		default:
 			break;
 	}
@@ -63,7 +64,6 @@ function processParkingCommand(
 		const parkingSlot = {
 			parkingSlotNumber: parkingSlotNumber + 1,
 			vehicleInformation,
-			status: COMMAND_NAME.PARK,
 		};
 		parkingLot.splice(parkingSlotNumber, 0, parkingSlot);
 		return getParkingMessage(parkingSlotNumber + 1);
@@ -88,10 +88,12 @@ function processLeavingCommand(parkingLot, vehicleInformation, hours) {
 function processStatusCommand(parkingLot) {
 	return getStatusMessage(parkingLot);
 }
+
 export function processParkingLot(arrayCommands) {
 	const parkingCapacity = getParkingCapacity(arrayCommands[0]);
-	console.log(parkingCapacity);
-	for (let i = 1; i < arrayCommands.length; i++) {
-		processCommand(arrayCommands[i], parkingCapacity);
+	if (parkingCapacity > 0) {
+		for (let i = 1; i < arrayCommands.length; i++) {
+			processCommand(arrayCommands[i], parkingCapacity);
+		}
 	}
 }
