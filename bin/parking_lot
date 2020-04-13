@@ -3,7 +3,7 @@ if [ "$1" != "" ]; then
     FILE=testData/"$1"
     if [ -f "$FILE" ]; then
       echo "Start test with $1"
-      npm start "$FILE"
+      yarn start "$FILE"
     else
       echo "$FILE does not exist."
     fi
