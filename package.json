@@ -4,7 +4,9 @@
   "description": "A test for client",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node src/app.js"
+    "start": "babel-node src/app.js",
+    "test": "mocha --timeout 15000 --exit -r @babel/register ./**/*.spec.js",
+    "test-with-coverage": "nyc mocha --timeout 15000 --exit -r @babel/register ./**/*.spec.js"
   },
   "author": "Cuong Nguyen",
   "license": "ISC",
@@ -13,10 +15,28 @@
       "@babel/preset-env"
     ]
   },
+  "nyc": {
+    "extension": [
+      ".js"
+    ],
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "check-coverage": true,
+    "branches": 80,
+    "lines": 80,
+    "functions": 80,
+    "statements": 80
+  },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
-    "@babel/preset-env": "^7.9.5"
+    "@babel/preset-env": "^7.9.5",
+    "@babel/register": "^7.9.0",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1",
+    "nyc": "^15.0.1"
   }
 }
