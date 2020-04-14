@@ -2,8 +2,8 @@
 
 - To make the file executable (maybe need sudo permission)
 
-  chmod +x bin/parking_lot
+    (sudo) chmod +x bin/parking_lot
 
-  chmod +x bin/run_functional_tests
+    (sudo) chmod +x bin/run_functional_tests
 
-  chmod +x bin/setup
+    (sudo) chmod +x bin/setup

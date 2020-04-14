@@ -15,9 +15,8 @@
 ## Setting up a local environment involves the following steps
 
 Install Node
-
-    Down load and install follow link below:
-        https://nodejs.org/en/download/
+Download and install follow link below:
+    https://nodejs.org/en/download/
 
 Install YARN
 
