@@ -61,6 +61,18 @@ function processParkingCommand(
 	parkingCapacity,
 	vehicleInformation
 ) {
+	const parkingIndex = findIndexByVehicleInformation(
+		parkingLot,
+		vehicleInformation
+	);
+	if (parkingIndex !== -1) {
+		console.log(
+			`Registration number ${vehicleInformation} already had Slot Number ${
+				parkingIndex + 1
+			}`
+		);
+		return;
+	}
 	if (parkingLot.length === parkingCapacity) {
 		return getFullMessage();
 	} else {
