@@ -29,12 +29,20 @@ function processCommand(command, parkingCapacity) {
 
 	switch (commandName) {
 		case COMMAND_NAME.PARK:
+			if (!vehicleInformation) {
+				console.log("Vehicle information should not empty!");
+				return;
+			}
 			return processParkingCommand(
 				initialParkingLot,
 				parkingCapacity,
 				vehicleInformation
 			);
 		case COMMAND_NAME.LEAVE:
+			if (!vehicleInformation) {
+				console.log("Vehicle information should not empty!");
+				return;
+			}
 			const hours = commandDetails[2];
 			return processLeavingCommand(
 				initialParkingLot,
